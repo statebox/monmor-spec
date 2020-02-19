@@ -5,6 +5,74 @@
 
 This document attempts to describe a interchange format for morphisms of monoidal categories.
 
+## Motivation
+
+Categories are algebraic structures that allow you to "compose" *maps* (also called *morphisms*).
+
+A *map* is a thing with a certain *source* and *target* type (called *domain* and *co-domain*). This can be graphically depicted as a box with *input* and *output* wires.
+
+![](map-f-ab.png)
+
+Composing a map is only possible if the *target* of one map is the *source* of the other. Graphically:
+
+![](map-compose.png)
+
+*Monoidal* categories (also called *tensor categories*) are categories with a *tensor* composition operation. Graphically this amounts to putting boxes next to eachother.
+
+![](tensor-1.png) 
+
+Which itself can be interpreted as a box.
+
+![](tensor-2.png)
+
+There is *no meaning assigned to the boxes*! This is what makes monoidal categories a useful language to describe many different systems, all of them using the same base language of boxes and wires.
+
+There are many different flavours of monoidal category: braided, symmetric, etc.
+
+We don't attempt to capture each such category out there, but this draft specification is an attempt to address the most common of those.
+
+## Terms
+
+
+### Generator / Box 📦
+
+A box has a *name* (can be any unicode string, also emoji's of course), *domain* and *codomain*.
+
+![](generator.png)
+
+```json
+{
+	"type": "generator",
+	"outputTypes": ["c", "d", "e"],
+	"name": "😎",
+	"inputTypes": ["a", "b"]
+}
+```
+
+### Spiders 🕷️
+
+Spiders 
+
+![](white-spider.png)
+
+
+```json
+{
+	"typeParam": "α",
+	"type": "spider",
+	"outputs": 5,
+	"name": "g",
+	"inputs": 4,
+	"color": "white"
+}
+```
+
+### Cups/Caps 🏆/🧢
+
+```json
+{"typeParam":"α*","type":"cup","name":"("}
+```
+
 ## Example
 
 Consider this string diagram.
