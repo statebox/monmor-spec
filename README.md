@@ -15,6 +15,8 @@ This could be represented as a term,
 
     f ; (h * g)
 
+(`;` is actually called "compose")
+
 In this format, that would be represented as.
 
 ```json
@@ -41,6 +43,12 @@ In this format, that would be represented as.
 	}]
 }
 ```
+
+## Combinators
+
+We have `compose` and `tensor`. Compose works in semicolon order.
+
+The `terms[]` array should contain at least two terms.
 
 ## Syntax
 
