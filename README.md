@@ -13,7 +13,7 @@ Consider this string diagram.
 
 This could be represented as a term,
 
-    f `compose` (h `tensor` g)
+    f ; (h * g)
 
 In this format, that would be represented as.
 
