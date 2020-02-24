@@ -11,73 +11,33 @@ Categories are algebraic structures that allow you to "compose" *maps* (also cal
 
 A *map* is a thing with a certain *source* and *target* type (called *domain* and *co-domain*). This can be graphically depicted as a box with *input* and *output* wires.
 
-![](map-f-ab.png)
+<img src="map-f-ab.png" width="150px"/>
 
 Composing a map is only possible if the *target* of one map is the *source* of the other. Graphically:
 
-![](map-compose.png)
+<img src="map-compose.png" width="300px"/>
 
-*Monoidal* categories (also called *tensor categories*) are categories with a *tensor* composition operation. Graphically this amounts to putting boxes next to eachother.
+*Monoidal* categories (also called *tensor categories*) are categories with an additional way of combining morphisms, called the *tensor* product. Instead of composing in sequence we compose "in parallel". Graphically this amounts to putting boxes next to eachother.
 
-![](tensor-1.png) 
+<img src="tensor-1.png" width="150px"/>
 
-Which itself can be interpreted as a box.
+Which itself can be interpreted as a box with two in and two outgoing wires.
 
-![](tensor-2.png)
+<img src="tensor-2.png" width="150px"/>
 
-There is *no meaning assigned to the boxes*! This is what makes monoidal categories a useful language to describe many different systems, all of them using the same base language of boxes and wires.
+There is *no meaning assigned to the boxes*!
 
-There are many different flavours of monoidal category: braided, symmetric, etc.
+This is on purpose. By seperating the *semantics* from the *syntax*, monoidal categories become a useful language to describe *many different systems*, all of them using the same base language of boxes and wires.
 
-We don't attempt to capture each such category out there, but this draft specification is an attempt to address the most common of those.
+There are many different flavours of monoidal category (syntax): braided, symmetric, etc.
 
-## Terms
-
-
-### Generator / Box 📦
-
-A box has a *name* (can be any unicode string, also emoji's of course), *domain* and *codomain*.
-
-![](generator.png)
-
-```json
-{
-	"type": "generator",
-	"outputTypes": ["c", "d", "e"],
-	"name": "😎",
-	"inputTypes": ["a", "b"]
-}
-```
-
-### Spiders 🕷️
-
-Spiders 
-
-![](white-spider.png)
-
-
-```json
-{
-	"typeParam": "α",
-	"type": "spider",
-	"outputs": 5,
-	"name": "g",
-	"inputs": 4,
-	"color": "white"
-}
-```
-
-### Cups/Caps 🏆/🧢
-
-```json
-{"typeParam":"α*","type":"cup","name":"("}
-```
+We don't attempt to capture each such category out there, but this draft specification is an attempt to address some of the most commonly used monoidal categories.
 
 ## Example
 
 Consider this string diagram.
 
-![](example.png)
+<img src="example.png" width="300px"/>
 
 This could be represented as a term,
 
@@ -117,6 +77,62 @@ In this format, that would be represented as.
 We have `compose` and `tensor`. Compose works in semicolon order.
 
 The `terms[]` array should contain at least two terms.
+
+## Terms
+
+### Generator / Box 📦
+
+A box has a *name* (can be any unicode string, also emoji's of course), *domain* and *codomain*.
+
+<img src="generator.png" width="150px"/>
+
+```json
+{
+	"type": "generator",
+	"outputTypes": ["c", "d", "e"],
+	"name": "😎",
+	"inputTypes": ["a", "b"]
+}
+```
+
+### Tensor
+
+- [ ] TODO
+
+### Compose
+
+- [ ] TODO
+
+### Spiders 🕷️
+
+In certain cases the is a unique morphism from `X^n -> X^m`, which is rendered as a dot with `n` in and `m` outgoing "legs".
+
+<img src="white-spider.png" width="150px"/>
+
+```json
+{
+	"typeParam": "α",
+	"type": "spider",
+	"outputs": 5,
+	"name": "g",
+	"inputs": 4,
+	"color": "white"
+}
+```
+
+### Cups/Caps 🏆/🧢
+
+```json
+{
+  "typeParam":"α*",
+  "type":"cup",
+  "name":"("
+}
+```
+
+### Identities & Permutations
+
+- [ ] TODO
 
 ## Syntax
 
